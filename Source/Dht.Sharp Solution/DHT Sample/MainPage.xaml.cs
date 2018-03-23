@@ -95,7 +95,7 @@ namespace Dht.Sample
 				_timer.Stop();
 
 				// ***
-				// *** read the sensor.
+				// *** Read the sensor.
 				// ***
 				IDhtReading reading = await _sensor.GetReadingAsync();
 

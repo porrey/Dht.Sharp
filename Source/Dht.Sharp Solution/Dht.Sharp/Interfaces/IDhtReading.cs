@@ -37,7 +37,7 @@ namespace Dht.Sharp
 		/// <summary>
 		/// Indicates that the reading from the sensor was invalid.
 		/// </summary>
-		CheckSumError
+		ChecksumError
 	}
 
 	/// <summary>

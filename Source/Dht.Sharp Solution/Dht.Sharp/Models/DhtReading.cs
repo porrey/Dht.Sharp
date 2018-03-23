@@ -62,7 +62,7 @@ namespace Dht.Sharp
 				// ***
 				((DhtReading)returnValue).Temperature = 0F;
 				((DhtReading)returnValue).Humidity = 0F;
-				((DhtReading)returnValue).Result = DhtReadingResult.CheckSumError;
+				((DhtReading)returnValue).Result = DhtReadingResult.ChecksumError;
 			}
 
 			return returnValue;
