@@ -1,11 +1,109 @@
-﻿<Page x:Class="Dht.Sample.MainPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      mc:Ignorable="d">
+﻿<common:BindablePage x:Class="Dht.Sample.MainPage"
+					 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+					 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+					 xmlns:common="using:Dht.Sample.Common"
+					 mc:Ignorable="d"
+					 RequestedTheme="Dark">
 
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="1*" />
+			<ColumnDefinition Width="2*" />
+			<ColumnDefinition Width="2*" />
+			<ColumnDefinition Width="1*" />
+		</Grid.ColumnDefinitions>
 
+		<Grid.RowDefinitions>
+			<RowDefinition Height="1*" />
+			<RowDefinition Height="1*" />
+			<RowDefinition Height="2*" />
+			<RowDefinition Height="1*" />
+			<RowDefinition Height="1*" />
+		</Grid.RowDefinitions>
+
+		<TextBlock Grid.Row="0"
+				   Grid.Column="0"
+				   Grid.ColumnSpan="4"
+				   Text="Go Native C# with DHT11/22"
+				   VerticalAlignment="Top"
+				   HorizontalAlignment="Left"
+				   FontSize="45"
+				   FontWeight="Medium"
+				   Margin="20"/>
+
+		<TextBlock Grid.Column="1"
+				   Grid.Row="1"
+				   VerticalAlignment="Bottom"
+				   HorizontalAlignment="Center"
+				   Margin="20"
+				   FontSize="54"
+				   FontWeight="Light"
+				   Text="Temperature" />
+
+		<TextBlock Grid.Column="1"
+				   Grid.Row="2"
+				   VerticalAlignment="Center"
+				   HorizontalAlignment="Center"
+				   Margin="20"
+				   FontSize="150"
+				   FontWeight="Normal"
+				   Text="{x:Bind Temperature, Mode=OneWay, Converter={StaticResource FloatToStringConverter}, ConverterParameter= F}" />
+
+		<TextBlock Grid.Column="2"
+				   Grid.Row="1"
+				   VerticalAlignment="Bottom"
+				   HorizontalAlignment="Center"
+				   Margin="20"
+				   FontSize="54"
+				   FontWeight="Light"
+				   Text="Humidity" />
+
+		<TextBlock Grid.Column="2"
+				   Grid.Row="2"
+				   VerticalAlignment="Center"
+				   HorizontalAlignment="Center"
+				   Margin="20"
+				   FontSize="150"
+				   FontWeight="Normal"
+				   Text="{x:Bind Humidity, Mode=OneWay, Converter={StaticResource FloatToStringConverter}, ConverterParameter= %}" />
+
+		<TextBlock Grid.Column="1"
+				   Grid.Row="3"
+				   VerticalAlignment="Center"
+				   HorizontalAlignment="Center"
+				   Margin="20"
+				   FontSize="44"
+				   FontWeight="Light"
+				   Text="Success Rate" />
+
+		<TextBlock Grid.Column="2"
+				   Grid.Row="3"
+				   VerticalAlignment="Center"
+				   HorizontalAlignment="Center"
+				   Margin="20"
+				   FontSize="45"
+				   FontWeight="Normal"
+				   Text="{x:Bind SuccessRate, Mode=OneWay, Converter={StaticResource FloatToStringConverter}, ConverterParameter= %}" />
+
+		<TextBlock Grid.Column="0"
+				   Grid.Row="4"
+				   VerticalAlignment="Center"
+				   HorizontalAlignment="Right"
+				   Margin="20"
+				   FontSize="34"
+				   FontWeight="Light"
+				   Text="Running Time" />
+
+		<TextBlock Grid.Column="1"
+				   Grid.ColumnSpan="3"
+				   Grid.Row="4"
+				   VerticalAlignment="Center"
+				   HorizontalAlignment="Center"
+				   Margin="20"
+				   FontSize="45"
+				   FontWeight="Normal"
+				   Text="{x:Bind RunningTime, Mode=OneWay}" />
 	</Grid>
-</Page>
+</common:BindablePage>

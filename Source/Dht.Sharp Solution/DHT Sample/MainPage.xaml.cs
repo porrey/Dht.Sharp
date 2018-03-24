@@ -16,6 +16,7 @@
 // along with Dht.Sharp Solution. If not, see http://www.gnu.org/licenses/.
 //
 using System;
+using Dht.Sample.Common;
 using Dht.Sharp;
 using Windows.Devices.Gpio;
 using Windows.UI.Xaml;
@@ -24,12 +25,12 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Dht.Sample
 {
-	public partial class MainPage : Page
+	public partial class MainPage : BindablePage
 	{
 		private DispatcherTimer _timer = new DispatcherTimer();
 
 		// ***
-		// ***
+		// *** Define a reference for the sensor instance.
 		// ***
 		IDht _sensor = null;
 
@@ -95,6 +96,11 @@ namespace Dht.Sample
 				_timer.Stop();
 
 				// ***
+				// *** Increment the counter.
+				// ***
+				_totalRequests++;
+
+				// ***
 				// *** Read the sensor.
 				// ***
 				IDhtReading reading = await _sensor.GetReadingAsync();
@@ -104,12 +110,17 @@ namespace Dht.Sample
 				// ***
 				if (reading.Result == DhtReadingResult.Valid)
 				{
-					System.Diagnostics.Debug.WriteLine($"Temperature = {reading.Temperature:0.0} C, Humidity = {reading.Humidity:0.0}%");
+					float t = reading.Temperature * 1.8F + 32F;
+					this.Temperature = t;
+					this.Humidity = reading.Humidity;
+					_successfulRequests++;
 				}
-				else
-				{
-					System.Diagnostics.Debug.WriteLine($"Error = {reading.Result}");
-				}
+
+				// ***
+				// *** Update the success rate and running time.
+				// ***
+				this.RaisePropertyChanged(nameof(this.SuccessRate));
+				this.RaisePropertyChanged(nameof(this.RunningTime	));
 			}
 			finally
 			{
@@ -117,6 +128,79 @@ namespace Dht.Sample
 				// *** Start the timer again.
 				// ***
 				_timer.Start();
+			}
+		}
+
+		private float _temperature = 0F;
+		public float Temperature
+		{
+			get
+			{
+				return _temperature;
+			}
+			set
+			{
+				this.SetProperty(ref _temperature, value);
+			}
+		}
+
+		private float _humidity = 0F;
+		public float Humidity
+		{
+			get
+			{
+				return _humidity;
+			}
+			set
+			{
+				this.SetProperty(ref _humidity, value);
+			}
+		}
+
+		private int _totalRequests = 0;
+		private int _successfulRequests = 0;
+		public float SuccessRate
+		{
+			get
+			{
+				float returnValue = 0F;
+
+				if (_totalRequests != 0F)
+				{
+					returnValue = 100F * (float)_successfulRequests / (float)_totalRequests;
+				}
+
+				return returnValue;
+			}
+		}
+
+		private DateTime _startedAt = DateTime.Now;
+		public string RunningTime
+		{
+			get
+			{
+				string returnValue = String.Empty;
+
+				TimeSpan ellapsed = DateTime.Now.Subtract(_startedAt);
+
+				if (ellapsed.Days > 0)
+				{
+					returnValue = $"{ellapsed.Days} day(s), {ellapsed.Hours} hour(s), {ellapsed.Minutes} minutes(s) and {ellapsed.Seconds} second(s)";
+				}
+				else if (ellapsed.Hours > 0)
+				{
+					returnValue = $"{ellapsed.Hours} hour(s), {ellapsed.Minutes} minutes(s) and {ellapsed.Seconds} second(s)";
+				}
+				else if (ellapsed.Minutes > 0)
+				{
+					returnValue = $"{ellapsed.Minutes} minutes(s) and {ellapsed.Seconds} second(s)";
+				}
+				else
+				{
+					returnValue = $"{ellapsed.Seconds} second(s)";
+				}
+
+				return returnValue;
 			}
 		}
 	}

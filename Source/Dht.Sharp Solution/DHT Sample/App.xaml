@@ -1,7 +1,12 @@
 ﻿<Application x:Class="Dht.Sample.App"
-			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-			 xmlns:local="using:Dht_ChangeReader"
-			 RequestedTheme="Light">
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:common="using:Dht.Sample.Common"
+             RequestedTheme="Light">
 
+	<Application.Resources>
+		<ResourceDictionary>
+			<common:FloatToStringConverter x:Key="FloatToStringConverter" />
+		</ResourceDictionary>
+	</Application.Resources>
 </Application>
