@@ -20,7 +20,6 @@ using Dht.Sample.Common;
 using Dht.Sharp;
 using Windows.Devices.Gpio;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 namespace Dht.Sample
@@ -115,12 +114,10 @@ namespace Dht.Sample
 					this.Humidity = reading.Humidity;
 					_successfulRequests++;
 				}
-
-				// ***
-				// *** Update the success rate and running time.
-				// ***
-				this.RaisePropertyChanged(nameof(this.SuccessRate));
-				this.RaisePropertyChanged(nameof(this.RunningTime	));
+			}
+			catch(Exception ex)
+			{
+				System.Diagnostics.Debug.WriteLine(ex.Message);
 			}
 			finally
 			{
@@ -129,6 +126,12 @@ namespace Dht.Sample
 				// ***
 				_timer.Start();
 			}
+
+			// ***
+			// *** Update the success rate and running time.
+			// ***
+			this.RaisePropertyChanged(nameof(this.SuccessRate));
+			this.RaisePropertyChanged(nameof(this.RunningTime));
 		}
 
 		private float _temperature = 0F;

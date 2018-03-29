@@ -32,7 +32,7 @@ namespace Dht.Sharp
 		/// <returns></returns>
 		public static byte[] ToByteArray(this IList<GpioChangeRecord> data)
 		{
-			byte[] returnValue = new byte[5];
+			byte[] returnValue = new byte[15];
 
 			// ***
 			// *** The change records contain the time of each input change from 5v (high)

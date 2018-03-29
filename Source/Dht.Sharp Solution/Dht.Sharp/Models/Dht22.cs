@@ -87,7 +87,7 @@ namespace Dht.Sharp
 			// ***
 			// *** The data sheet states that the sensor should be given 1 second to initialize.
 			// ***
-			await Task.Delay(TimeSpan.FromSeconds(2));
+			await Task.Delay(TimeSpan.FromSeconds(1));
 		}
 
 		/// <summary>
