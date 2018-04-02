@@ -7,11 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DHT Sample", "DHT Sample\DH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dht.Sharp", "Dht.Sharp\Dht.Sharp.csproj", "{44999127-DFCF-4581-B461-11A7E1FD5FA8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{52D15E03-220E-4AAF-A917-0114D46B453C}"
-	ProjectSection(SolutionItems) = preProject
-		NuGet\Dht.Sharp.1.0.0.nupkg = NuGet\Dht.Sharp.1.0.0.nupkg
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
