@@ -1,4 +1,4 @@
-﻿// Copyright © 2018 Daniel Porrey
+﻿// Copyright © 2018-2022 Daniel Porrey
 //
 // This file is part of the Dht11 Solution.
 // 
@@ -16,7 +16,6 @@
 // along with Dht.Sharp Solution. If not, see http://www.gnu.org/licenses/.
 //
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;

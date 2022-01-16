@@ -138,11 +138,6 @@
       <Name>Dht.Sharp</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <SDKReference Include="WindowsIoT, Version=10.0.17134.0">
-      <Name>Windows IoT Extensions for the UWP</Name>
-    </SDKReference>
-  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
